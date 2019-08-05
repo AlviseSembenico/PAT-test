@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import FormView, CreateView
 
+from .forms import RevisionForm
 from .models import Tool, Revision
 
 
@@ -28,9 +29,14 @@ class CreateTool(CreateView):
     success_url = 'tools'
 
 
-class CreateRevision(CreateView):
+class CreateRevision(FormView):
 
     template_name = 'addrevision.html'
-    model = Revision
-    fields = ['tool', 'date', 'test_engineer']
-    success_url = 'tools'
+    form_class = RevisionForm
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # import pdb
+        # pdb.set_trace()
+        # context[""] =
+        return context

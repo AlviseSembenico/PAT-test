@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'PAT'
+    'PAT',
+    'ajax_select',
 ]
 
 MIDDLEWARE = [

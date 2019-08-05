@@ -8,10 +8,12 @@ class ToolsAdmin(admin.ModelAdmin):
 
 
 @admin.register(Revision)
-class ToolsAdmin(admin.ModelAdmin):
+class RevisionAdmin(admin.ModelAdmin):
+
     list_display = [
         'tool',
         'date',
+        'result',
         'test_engineer',
-        'pending'
+        'pending',
     ]
