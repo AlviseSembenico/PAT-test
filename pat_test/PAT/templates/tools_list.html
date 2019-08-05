@@ -10,9 +10,16 @@
             <li class="breadcrumb-item active">Dashboard</li>
         </ol>
     </div>
-    <div class="col-md-6 col-4 align-self-center">
-        <a href="addtool"
-            class="btn pull-right hidden-sm-down btn-success">Add tool</a>
+    <div class="col-md-6 col-4 align-self-center">  
+        <a     class="btn pull-right hidden-sm-down btn-success"
+    {% if request.GET.p == '1' %}
+        href="tools?p=0">
+            Show all
+    {% else %}
+        href="tools?p=1">
+    Show pending
+    {% endif %}
+    </a>
     </div>
 </div>
 <!-- ============================================================== -->
@@ -28,7 +35,7 @@
             <div class="card-body">
                 <h4 class="card-title">Tools list</h4>
                 <div class="table-responsive">
-                    <table class="table no-wrap">
+                    <table class="table no-wrap" id="toolTable">
                         <thead>
                             <tr>
                                 <th>Tool ID</th>
@@ -48,7 +55,7 @@
                                     <td>{{tool.last_rev.test_engineer|default:'Not on file'}}</td>
                                     <td>{{tool.last_rev.next_due|default:'Not on file'}}</td>
                                     <td>
-                                    {% if tool.last_rev.pending %}
+                                    {% if tool.pending %}
                                         True
                                     {% else %}
                                         False
@@ -66,3 +73,6 @@
 
 
 {% endblock content %}
+
+{% block script %}
+{% endblock script %}

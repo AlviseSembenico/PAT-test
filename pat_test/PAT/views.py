@@ -12,6 +12,13 @@ class ToolsList(ListView):
     paginate_by = 10
     model = Tool
 
+    def get_queryset(self):
+        p = self.request.GET.get('p') == '1'
+        if p:
+            return Tool.objects.filter(pending=True)
+        else:
+            return Tool.objects.all()
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         for tool in context["object_list"]:

@@ -4,7 +4,11 @@ from .models import Tool, Revision
 
 @admin.register(Tool)
 class ToolsAdmin(admin.ModelAdmin):
-    list_display = ['identifier', 'name']
+    list_display = [
+        'identifier',
+        'name',
+        'pending',
+    ]
 
 
 @admin.register(Revision)
@@ -15,5 +19,4 @@ class RevisionAdmin(admin.ModelAdmin):
         'date',
         'result',
         'test_engineer',
-        'pending',
     ]
