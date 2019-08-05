@@ -26,3 +26,11 @@ class CreateTool(CreateView):
     model = Tool
     fields = ['identifier', 'name']
     success_url = 'tools'
+
+
+class CreateRevision(CreateView):
+
+    template_name = 'addrevision.html'
+    model = Revision
+    fields = ['tool', 'date', 'test_engineer']
+    success_url = 'tools'
