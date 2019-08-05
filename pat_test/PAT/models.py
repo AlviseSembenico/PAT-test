@@ -12,4 +12,4 @@ class Revision(models.Model):
     tool = models.ForeignKey(Tool, on_delete=models.CASCADE)
     date = models.DateField()
     test_engineer = models.CharField(max_length=100)
-    pending = models.BooleanField()
+    pending = models.BooleanField(default=False)
