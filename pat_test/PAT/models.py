@@ -28,3 +28,6 @@ class Revision(models.Model):
     ])
     test_engineer = models.CharField(max_length=100)
     comment = models.TextField(blank=True, null=True, default=True)
+
+    def get_class(self):
+        return self._class
