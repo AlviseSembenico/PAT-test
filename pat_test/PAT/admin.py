@@ -14,9 +14,4 @@ class ToolsAdmin(admin.ModelAdmin):
 @admin.register(Revision)
 class RevisionAdmin(admin.ModelAdmin):
 
-    list_display = [
-        'tool',
-        'date',
-        'result',
-        'test_engineer',
-    ]
+    list_display = [f.name for f in Revision._meta.fields]

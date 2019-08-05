@@ -38,33 +38,33 @@
                     <table class="table no-wrap" id="toolTable">
                         <thead>
                             <tr>
-                                <th>Tool ID</th>
-                                <th>Name</th>
-                                <th>Pass Date</th>
+                                <th>Location</th>
+                                <th>Class</th>
+                                <th>Date</th>
+                                <th>Visual check</th>
+                                <th>Earth</th>
+                                <th>Leakage</th>
+                                <th>Insulation</th>
+                                <th>Function check</th>
+                                <th>Result</th>
                                 <th>Test engineer</th>
-                                <th>Next due</th>
-                                <th>Pending</th>
-                                <th>Show revision</th>
+                                <th>Comment</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for tool in object_list %}
+                            {% for revision in object.revision_set.all %}
                                 <tr>
-                                    <td>{{tool.identifier}}</td>
-                                    <td>{{tool.name}}</td>
-                                    <td>{{tool.last_rev.date|default:'Not on file'}}</td>
-                                    <td>{{tool.last_rev.test_engineer|default:'Not on file'}}</td>
-                                    <td>{{tool.last_rev.next_due|default:'Not on file'}}</td>
-                                    <td>
-                                    {% if tool.pending %}
-                                        <a href="addrevision?init={{tool.id}}" class="btn waves-effect waves-light btn-info">Add revision</a>
-                                    {% else %}
-                                        False
-                                    {% endif %}
-                                    </td>
-                                    <td>
-                                    <a href="revisions/{{tool.id}}" class="btn waves-effect waves-light btn-info">Show revision</a>
-                                    </td>
+                                    <td>{{revision.location}}</td>
+                                    <td>{{revision.get_class}}</td>
+                                    <td>{{revision.date}}</td>
+                                    <td>{{revision.visual_check}}</td>
+                                    <td>{{revision.earth}}</td>
+                                    <td>{{revision.leakage}}</td>
+                                    <td>{{revision.insulation}}</td>
+                                    <td>{{revision.function_check}}</td>
+                                    <td>{{revision.result}}</td>
+                                    <td>{{revision.test_engineer}}</td>
+                                    <td>{{revision.comment}}</td>
                                 </tr>
                             {% endfor %}
                         </tbody>

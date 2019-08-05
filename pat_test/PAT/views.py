@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.edit import FormView, CreateView
+from django.views.generic.detail import DetailView
+
 from django.shortcuts import get_object_or_404
 
 from .forms import RevisionForm
@@ -27,6 +29,12 @@ class ToolsList(ListView):
             if tool.last_rev:
                 tool.last_rev.next_due = tool.last_rev.date.replace(year=tool.last_rev.date.year+1)
         return context
+
+
+class RevisionsList(DetailView):
+
+    template_name = 'revision_list.html'
+    model = Tool
 
 
 class CreateTool(CreateView):
