@@ -13,10 +13,10 @@
     <div class="col-md-6 col-4 align-self-center">  
         <a     class="btn pull-right hidden-sm-down btn-success"
     {% if request.GET.p == '1' %}
-        href="tools?p=0">
+        href="/?p=0">
             Show all
     {% else %}
-        href="tools?p=1">
+        href="/?p=1">
     Show pending
     {% endif %}
     </a>
@@ -57,7 +57,7 @@
                                     <td>{{tool.last_rev.next_due|default:'Not on file'}}</td>
                                     <td>
                                     {% if tool.pending %}
-                                        <a href="addrevision?init={{tool.id}}" class="btn waves-effect waves-light btn-info">Add revision</a>
+                                        <a href="addrevision?init={{tool.id}}" class="btn waves-effect waves-light btn-warning">Add revision</a>
                                     {% else %}
                                         False
                                     {% endif %}
