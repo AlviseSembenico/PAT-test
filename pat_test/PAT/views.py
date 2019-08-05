@@ -6,6 +6,6 @@ from .models import Tools, Revision
 
 class ToolsList(ListView):
 
-    template_name = ''
+    template_name = 'tools_list.html'
     paginate_by = 10
     model = Tools

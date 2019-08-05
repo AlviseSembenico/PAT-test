@@ -51,6 +51,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'pat_test.urls'
+SETTINGS_PATH = os.path.normpath(os.path.dirname(__file__))
 
 TEMPLATES = [
     {
@@ -67,6 +68,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'pat_test.wsgi.application'
 
