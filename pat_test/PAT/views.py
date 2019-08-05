@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.edit import FormView, CreateView
+from django.shortcuts import get_object_or_404
 
 from .forms import RevisionForm
 from .models import Tool, Revision
@@ -41,3 +42,10 @@ class CreateRevision(FormView):
     template_name = 'addrevision.html'
     form_class = RevisionForm
     success_url = 'tools'
+
+    def get_initial(self):
+        initial = super().get_initial()
+        init = self.request.GET.get('init')
+        if init:
+            initial['tool'] = int(init)  # get_object_or_404(Tool, pk=int(init))
+        return initial

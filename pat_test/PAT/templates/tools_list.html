@@ -56,7 +56,7 @@
                                     <td>{{tool.last_rev.next_due|default:'Not on file'}}</td>
                                     <td>
                                     {% if tool.pending %}
-                                        True
+                                        <a href="addrevision?init={{tool.id}}" class="btn waves-effect waves-light btn-info">Add revision</a>
                                     {% else %}
                                         False
                                     {% endif %}

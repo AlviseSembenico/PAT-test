@@ -11,8 +11,9 @@ class RevisionForm(forms.ModelForm):
         model = Revision
         fields = [
             'date',
+            'test_engineer',
             'result',
-            'test_engineer'
         ]
 
     tool = AutoCompleteSelectField('Tool', required=True, help_text=None)
+    field_order = ['tool', 'date', 'test_engineer', 'result']
