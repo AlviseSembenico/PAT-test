@@ -21,3 +21,19 @@ class RevisionForm(forms.ModelForm):
             (2, 'Fail')
         ],
     )
+    visual_check = forms.MultipleChoiceField(
+        required=False,
+        widget=forms.RadioSelect,
+        choices=[
+            (1, 'Pass'),
+            (2, 'Fail')
+        ],
+    )
+    function_check = forms.MultipleChoiceField(
+        required=False,
+        widget=forms.RadioSelect,
+        choices=[
+            (1, 'Pass'),
+            (2, 'Fail')
+        ],
+    )

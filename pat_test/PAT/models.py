@@ -17,11 +17,17 @@ class Revision(models.Model):
     location = models.CharField(max_length=100)
     classID = models.IntegerField('class')
     date = models.DateField()
-    visual_check = models.BooleanField()
+    visual_check = models.IntegerField(choices=[
+        (1, 'Pass'),
+        (2, 'Fail')
+    ])
     earth = models.FloatField()
     leakage = models.FloatField()
     insulation = models.FloatField()
-    function_check = models.BooleanField()
+    function_check = models.IntegerField(choices=[
+        (1, 'Pass'),
+        (2, 'Fail')
+    ])
     result = models.IntegerField(choices=[
         (1, 'Pass'),
         (2, 'Fail')
