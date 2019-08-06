@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
+
 
 {% block content %}
 
@@ -7,12 +9,70 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Tools list</h4>
-                    <form method="post">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <input type="submit" value="Save">
-                </form>
+                <div class="col-sm-6">
+                    <h4 class="card-title">Add revision</h4>
+                        <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label>Tool</label>
+                            {% render_field form.tool class+="form-control" %}
+                        </div>
+                        <div class="form-group">
+                            <label>Test Engineer</label>
+                            {% render_field form.test_engineer class+="form-control" %}
+                        </div>
+                        <div class="form-group">
+                            <label>Date</label>
+                            {% render_field form.date class+="form-control" type="date" %}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Result</label>
+                            <div class="col-sm-2">
+                            {% for choice in form.result %}
+                                <div class="custom-control custom-radio">
+                                    {{ choice.tag }}
+                                    <label style="padding-left: 10; margin-top: -5" class="custom-control-label" for="customRadio1">{{ choice.choice_label }}</label>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Location</label>
+                            {% render_field form.location class+="form-control" %}
+                        </div>
+                        <div class="form-group">
+                            <label>Class</label>
+                            {% render_field form.classID class+="form-control" type="number" %}
+                        </div>
+                        <div class="form-group">
+                            {% render_field form.visual_check class+="form-control-input" type="checkbox" %}
+                            <label for="{{ form.visual_check.id_for_label }}">Visual check</label>
+                        </div>
+                        <div class="form-group">
+                            <label>Earth</label>
+                            {% render_field form.earth class+="form-control" type="number" %}
+                        </div>
+                        <div class="form-group">
+                            <label>Leakage</label>
+                            {% render_field form.leakage class+="form-control" type="number" %}
+                        </div>
+                        <div class="form-group">
+                            <label>Insulation</label>
+                            {% render_field form.insulation class+="form-control" type="number" %}
+                        </div>
+                        <div class="form-group">
+                            {% render_field form.function_check class+="form-control-input" type="checkbox" %}
+                            <label for="{{ form.function_check.id_for_label }}">Function check</label>
+                        </div>
+                        <div class="form-group">
+                            <label>Comment</label>
+                            {% render_field form.comment class+="form-control" type="number" %}
+                        </div>
+                        <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
+                        <button type="button" class="btn btn-dark" onclick="window.history.back();">Back</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
