@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse, reverse_lazy
 from django.views.generic.list import ListView
 from django.views.generic.edit import FormView, CreateView
 from django.views.generic.detail import DetailView
@@ -12,7 +13,7 @@ from .models import Tool, Revision
 class ToolsList(ListView):
 
     template_name = 'tools_list.html'
-    paginate_by = 10
+    # paginate_by = 10
     model = Tool
 
     def get_queryset(self):
@@ -42,14 +43,20 @@ class CreateTool(CreateView):
     template_name = 'addtool.html'
     model = Tool
     fields = ['identifier', 'name']
-    success_url = 'tools'
+    success_url = reverse_lazy('tools')
 
 
 class CreateRevision(FormView):
 
     template_name = 'addrevision.html'
     form_class = RevisionForm
-    success_url = 'tools'
+    success_url = reverse_lazy('tools')
+
+    def form_valid(self, form):
+        d = super().form_valid(form)
+        # aggiungere salvataggio revision
+        # rimuovere eventuale pending of tool object
+        return d
 
     def get_initial(self):
         initial = super().get_initial()

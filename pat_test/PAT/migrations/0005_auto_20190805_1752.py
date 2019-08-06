@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='revision',
             name='comment',
-            field=models.TextField(blank=True, default=True, null=True),
+            field=models.TextField(blank=True, default=None, null=True),
         ),
         migrations.AddField(
             model_name='revision',

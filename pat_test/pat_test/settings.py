@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'PAT',
     'ajax_select',
+    'widget_tweaks'
 ]
 
 MIDDLEWARE = [
