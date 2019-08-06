@@ -6,7 +6,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Tools list</h4>
+                <h4 class="card-title">{{object}} revisions list</h4>
                 <div class="table-responsive">
                     <table class="table no-wrap" id="toolTable">
                         <thead>
@@ -52,4 +52,19 @@
 {% endblock content %}
 
 {% block script %}
+<script>
+$(document).ready(function() {
+    $('#toolTable').DataTable( {
+    dom: 'Bfrtip',
+    buttons: [
+        'excel', 'pdf'
+    ],
+    columnDefs: [
+        { orderable: true, className: 'reorder', targets: 2 },
+        { orderable: false, targets: '_all' }
+    ]
+} );
+});
+
+</script>
 {% endblock script %}
