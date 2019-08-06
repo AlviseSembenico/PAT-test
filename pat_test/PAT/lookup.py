@@ -9,6 +9,9 @@ class ToolLookup(LookupChannel):
 
     model = Tool
 
+    def check_auth(self, request):
+        return True
+
     def get_query(self, q, request):
         return self.model.objects.filter(Q(identifier__icontains=q) | Q(name__icontains=q))
 
