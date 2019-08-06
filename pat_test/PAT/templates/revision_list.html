@@ -57,7 +57,8 @@ $(document).ready(function() {
     $('#toolTable').DataTable( {
     dom: 'Bfrtip',
     buttons: [
-        'excel', 'pdf'
+        { extend: 'excel', text: 'Export to excel' },
+        { extend: 'pdf', text: 'Export to PDF' },
     ],
     columnDefs: [
         { orderable: true, className: 'reorder', targets: 2 },
