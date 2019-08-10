@@ -1,0 +1,28 @@
+version: '3.4'
+
+services:
+  web:
+    build: .
+    command: sh /start.sh
+    network_mode: "host"
+    volumes:
+      - static_volume:/pat/pat_test/static
+    ports:
+      - 8001:8001
+    environment:
+      - DEBUG=0
+      - DJANGO_SETTINGS_MODULE=pat_test.settings.deploy
+  
+  nginx:
+    build: ./nginx
+    ports:
+      - 8000:80
+    depends_on:
+      - web
+    volumes:
+      - static_volume:/allarmi/src/AllarmiWs/static
+    network_mode: "host"  
+volumes:
+  static_volume:
+
+

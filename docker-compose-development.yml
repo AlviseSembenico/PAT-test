@@ -1,0 +1,27 @@
+version: '3.3'
+
+services:
+  web:
+    build: .
+    command: sh /start.sh
+    volumes:
+      - static_volume:/allarmi/src/AllarmiWs/static
+    expose:
+      - 8000
+    environment:
+      - DEBUG=0
+      - DJANGO_SETTINGS_MODULE=AllarmiWs.settings.debug
+  
+  nginx:
+    build: ./nginx
+    ports:
+      - 8000:80
+    depends_on:
+      - web
+    volumes:
+      - static_volume:/allarmi/src/AllarmiWs/static
+  
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:
