@@ -13,7 +13,7 @@ class RevisionForm(forms.ModelForm):
 
     tool = make_ajax_field(Revision, 'tool', 'Tool', help_text=None)
     field_order = ['tool', 'date', 'test_engineer', 'result']
-    result = forms.MultipleChoiceField(
+    result = forms.ChoiceField(
         required=False,
         widget=forms.RadioSelect,
         choices=[
@@ -21,7 +21,7 @@ class RevisionForm(forms.ModelForm):
             (2, 'Fail')
         ],
     )
-    visual_check = forms.MultipleChoiceField(
+    visual_check = forms.ChoiceField(
         required=False,
         widget=forms.RadioSelect,
         choices=[
@@ -29,7 +29,7 @@ class RevisionForm(forms.ModelForm):
             (2, 'Fail')
         ],
     )
-    function_check = forms.MultipleChoiceField(
+    function_check = forms.ChoiceField(
         required=False,
         widget=forms.RadioSelect,
         choices=[
