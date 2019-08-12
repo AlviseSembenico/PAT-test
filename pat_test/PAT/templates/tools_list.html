@@ -39,6 +39,7 @@
                         <thead>
                             <tr>
                                 <th>Tool ID</th>
+                                <th>Location</th>
                                 <th>Name</th>
                                 <th>Pass Date</th>
                                 <th>Test engineer</th>
@@ -52,6 +53,7 @@
                             {% for tool in object_list %}
                                 <tr>
                                     <td>{{tool.identifier}}</td>
+                                    <td>{{tool.last_rev.location}}</td>
                                     <td>{{tool.name}}</td>
                                     <td>{{tool.last_rev.date|default:'Not on file'}}</td>
                                     <td>{{tool.last_rev.test_engineer|default:'Not on file'}}</td>
