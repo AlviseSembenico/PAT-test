@@ -24,7 +24,7 @@ services:
     depends_on:
       - web
     volumes:
-      - static_volume:/allarmi/src/AllarmiWs/static
+      - static_volume:/pat/pat_test/static
 
   db:
     image: postgres:11.2-alpine
