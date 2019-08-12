@@ -46,17 +46,17 @@ class CreateTool(LoginRequiredMixin,CreateView):
     success_url = reverse_lazy('tools')
 
 
-class CreateRevision(LoginRequiredMixin,FormView):
+class CreateRevision(LoginRequiredMixin,CreateView):
 
     template_name = 'addrevision.html'
     form_class = RevisionForm
     success_url = reverse_lazy('tools')
 
     def form_valid(self, form):
-        d = super().form_valid(form)
-        # aggiungere salvataggio revision
-        # rimuovere eventuale pending of tool object
-        return d
+        self.object = form.save()
+        self.object.tool.pending=False
+        self.object.tool.save()
+        return redirect(self.get_success_url())
 
     def get_initial(self):
         initial = super().get_initial()
@@ -67,7 +67,7 @@ class CreateRevision(LoginRequiredMixin,FormView):
 
 class SetToolPending(DetailView):
 
-    template_name = 'revision_list.html'
+    template_name = 'revision_list.html' 
     model = Tool
 
     def get(self, request, *args, **kwargs):
