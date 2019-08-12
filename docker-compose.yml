@@ -4,7 +4,7 @@ services:
   web:
     build: .
     volumes:
-      - static_volume:/pat/pat_test/static
+      - static_volume:/pat/pat_test/collect_static
     expose:
       - 8000
     environment:
@@ -23,7 +23,7 @@ services:
     depends_on:
       - web
     volumes:
-      - static_volume:/pat/pat_test/static
+      - static_volume:/pat/pat_test/collect_static
 
   db:
     image: postgres:11.2-alpine
