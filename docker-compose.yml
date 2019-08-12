@@ -13,6 +13,7 @@ services:
       - DJANGO_SETTINGS_MODULE=pat_test.settings.deploy
       - SQL_DATABASE=web
       - SQL_ENGINE=django.db.backends.postgresql_psycopg2
+      - SQL_HOST=db
     depends_on:
       - db
 
