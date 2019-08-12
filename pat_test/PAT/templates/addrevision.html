@@ -11,7 +11,21 @@
             <div class="card-body">
                 <div class="col-sm-6">
                     <h4 class="card-title">Add revision</h4>
-                        <form method="post">
+                    <form method="post">
+                    {% if form.errors %}
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <div class="alert alert-danger">
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                        {% for error in form.non_field_errors %}
+                            <div class="alert alert-danger">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
                         {% csrf_token %}
                         <div class="form-group">
                             <label>Tool</label>
@@ -80,9 +94,20 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label>Result</label>
+                            <div class="col-sm-2">
+                            {% for choice in form.result %}
+                                <div class="custom-control custom-radio">
+                                    {{ choice.tag }}
+                                    <label style="padding-left: 10; margin-top: -5" class="custom-control-label" for="customRadio1">{{ choice.choice_label }}</label>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label>Comment</label>
                             {% render_field form.comment class+="form-control" type="number" %}
-                        </div>
+                        </div> 
                         <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
                         <button type="button" class="btn btn-dark" onclick="window.history.back();">Back</button>
                     </form>
