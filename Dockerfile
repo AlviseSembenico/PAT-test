@@ -22,6 +22,22 @@ RUN apk update \
     && pip install psycopg2 \
     && apk del build-deps
 
+RUN apk --no-cache add \
+    gcc \
+    musl-dev \
+    pcre-dev \
+    linux-headers \
+    postgresql-dev \
+    python3-dev \
+    # libraries installed using git
+    git \
+    # lxml dependencies
+    libxslt-dev \
+    # pillow dependencies
+    jpeg-dev \
+    openjpeg-dev \
+    zlib-dev
+
 # install dependencies
 RUN pip install --upgrade pip
 RUN pip install pipenv
