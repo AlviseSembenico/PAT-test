@@ -4,25 +4,35 @@ services:
   web:
     build: .
     command: sh /start.sh
-    network_mode: "host"
     volumes:
       - static_volume:/pat/pat_test/static
-    ports:
-      - 8001:8001
+    expose:
+      - 8000
     environment:
       - DEBUG=0
       - DJANGO_SETTINGS_MODULE=pat_test.settings.deploy
-  
+      - SQL_DATABASE=web
+      - SQL_ENGINE=django.db.backends.postgresql_psycopg2
+    depends_on:
+      - db
+
   nginx:
     build: ./nginx
     ports:
-      - 8000:80
+      - 80:80
     depends_on:
       - web
     volumes:
       - static_volume:/allarmi/src/AllarmiWs/static
-    network_mode: "host"  
+
+  db:
+    image: postgres:11.2-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=pwd_admin
+      - POSTGRES_DB=web
+      
 volumes:
-  static_volume:
-
-
+  postgres_data:
