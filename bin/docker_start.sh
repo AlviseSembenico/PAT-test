@@ -8,3 +8,4 @@ python pat_test/manage.py collectstatic --no-input --clear
 
 echo "Startup gunicorn"
 gunicorn --chdir pat_test --bind :8000 pat_test.wsgi:application
+python manage.py collectstatic --no-input --clear

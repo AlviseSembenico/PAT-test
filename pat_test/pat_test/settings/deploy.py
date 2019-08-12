@@ -1,4 +1,4 @@
-from .base import *
+from pat_test.settings.base import *
 
 DATABASES = {
     'default': {

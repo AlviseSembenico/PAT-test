@@ -1,3 +1,4 @@
 env/*
 pat_test/static/a*
 *.pyc
+pat_test/collect_static/*

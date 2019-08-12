@@ -3,7 +3,6 @@ version: '3.4'
 services:
   web:
     build: .
-    command: sh /start.sh
     volumes:
       - static_volume:/pat/pat_test/static
     expose:
