@@ -1,10 +1,10 @@
 #!/bin/sh
 
 echo "Apply database migrations"
-python src/manage.py migrate
+python pat_test/manage.py migrate
 
 echo "Collect static files"
-python src/manage.py collectstatic --no-input --clear
+python pat_test/manage.py collectstatic --no-input --clear
 
 echo "Startup gunicorn"
-gunicorn --chdir src --bind :8001 AllarmiWs.wsgi:application
+gunicorn --chdir src --bind :8000 pat_test.wsgi:application
