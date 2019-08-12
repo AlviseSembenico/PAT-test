@@ -15,16 +15,23 @@ WORKDIR /pat
 # Copy the current directory contents into the container at /allarmi
 ADD ./ /pat/
 
-# Install any needed packages specified in requirements.txt
-RUN pip install -r requirements.txt
-
 RUN apk update \
     && apk add --virtual build-deps gcc python3-dev musl-dev \
     && apk add postgresql-dev \
     && pip install psycopg2 \
     && apk del build-deps
 
-EXPOSE 8001
+# install dependencies
+RUN pip install --upgrade pip
+RUN pip install pipenv
+# COPY ./Pipfile /usr/src/app/Pipfile
+RUN pipenv install --skip-lock --system
+
+# Install any needed packages specified in requirements.txt
+RUN pip install -r requirements.txt
+
+
+EXPOSE 8000
 
 COPY ./bin/docker_start.sh /start.sh
 
