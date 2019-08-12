@@ -86,5 +86,22 @@
 
 {% endblock content %}
 
+
 {% block script %}
+<script>
+$(document).ready(function() {
+    $('#toolTable').DataTable( {
+    dom: 'Bfrtip',
+    buttons: [
+        { extend: 'excel', text: 'Export to excel' },
+        { extend: 'pdf', text: 'Export to PDF' },
+    ],
+    columnDefs: [
+        { orderable: true, className: 'reorder', targets: 2 },
+        { orderable: false, targets: '_all' }
+    ]
+} );
+});
+
+</script>
 {% endblock script %}
