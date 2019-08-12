@@ -45,6 +45,7 @@
                                 <th>Next due</th>
                                 <th>Pending</th>
                                 <th>Show revision</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -64,6 +65,11 @@
                                     </td>
                                     <td>
                                     <a href="revisions/{{tool.id}}" class="btn waves-effect waves-light btn-info">Show revision</a>
+                                    </td>
+                                    <td>
+                                    {% if not tool.pending %}
+                                        <a href="setpending/{{tool.id}}" class="btn waves-effect waves-light btn-info">Set pending</a>
+                                    {% endif %}
                                     </td>
                                 </tr>
                             {% endfor %}

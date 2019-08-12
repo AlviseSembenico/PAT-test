@@ -6,7 +6,6 @@ from django.views.generic.detail import DetailView
 from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
-
 from .forms import RevisionForm
 from .models import Tool, Revision
 
@@ -66,7 +65,23 @@ class CreateRevision(LoginRequiredMixin,FormView):
             initial['tool'] = int(init)  # get_object_or_404(Tool, pk=int(init))
         return initial
 
+class SetToolPending(DetailView):
+
+    template_name = 'revision_list.html'
+    model = Tool
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        context = self.get_context_data(object=self.object)
+        return redirect('/')
+
+
+    def get_context_data(self,*args,**kwargs):
+        data = super().get_context_data(*args,**kwargs)
+        data['object'].pending = True
+        data['object'].save()
 
 def logout_view(request):
     logout(request)
     return redirect('/')
+
