@@ -49,7 +49,5 @@ COPY ./bin/docker_start.sh /start.sh
 
 RUN chmod +x /start.sh
 
-# ENV DJANGO_SETTINGS_MODULE=AllarmiWs.settings.deploy
-
 # Run startup file
 ENTRYPOINT [ "/start.sh" ]
