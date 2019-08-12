@@ -35,4 +35,5 @@ services:
       - POSTGRES_DB=web
       
 volumes:
+  static_volume:
   postgres_data:
