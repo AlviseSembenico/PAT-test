@@ -7,4 +7,4 @@ echo "Collect static files"
 python pat_test/manage.py collectstatic --no-input --clear
 
 echo "Startup gunicorn"
-gunicorn --chdir src --bind :8000 pat_test.wsgi:application
+gunicorn --chdir pat_test --bind :8000 pat_test.wsgi:application
