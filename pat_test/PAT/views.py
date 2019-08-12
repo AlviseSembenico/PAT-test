@@ -3,14 +3,15 @@ from django.urls import reverse, reverse_lazy
 from django.views.generic.list import ListView
 from django.views.generic.edit import FormView, CreateView
 from django.views.generic.detail import DetailView
-
-from django.shortcuts import get_object_or_404
+from django.contrib.auth import logout
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import get_object_or_404, redirect
 
 from .forms import RevisionForm
 from .models import Tool, Revision
 
 
-class ToolsList(ListView):
+class ToolsList(LoginRequiredMixin,ListView):
 
     template_name = 'tools_list.html'
     # paginate_by = 10
@@ -32,13 +33,13 @@ class ToolsList(ListView):
         return context
 
 
-class RevisionsList(DetailView):
+class RevisionsList(LoginRequiredMixin,DetailView):
 
     template_name = 'revision_list.html'
     model = Tool
 
 
-class CreateTool(CreateView):
+class CreateTool(LoginRequiredMixin,CreateView):
 
     template_name = 'addtool.html'
     model = Tool
@@ -46,7 +47,7 @@ class CreateTool(CreateView):
     success_url = reverse_lazy('tools')
 
 
-class CreateRevision(FormView):
+class CreateRevision(LoginRequiredMixin,FormView):
 
     template_name = 'addrevision.html'
     form_class = RevisionForm
@@ -64,3 +65,8 @@ class CreateRevision(FormView):
         if init:
             initial['tool'] = int(init)  # get_object_or_404(Tool, pk=int(init))
         return initial
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('/')

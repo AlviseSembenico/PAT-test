@@ -36,4 +36,4 @@ class Revision(models.Model):
     comment = models.TextField(blank=True, null=True, default=None)
 
     def get_class(self):
-        return self._class
+        return self.classID
