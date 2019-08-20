@@ -30,12 +30,12 @@
                                     <td>{{revision.location}}</td>
                                     <td>{{revision.get_class}}</td>
                                     <td>{{revision.date}}</td>
-                                    <td>{{revision.visual_check|yesno:"Pass,Failed"}}</td>
+                                    <td>{{revision.get_visual_check_display}}</td>
                                     <td>{{revision.earth}}</td>
                                     <td>{{revision.leakage}}</td>
                                     <td>{{revision.insulation}}</td>
-                                    <td>{{revision.function_check|yesno:"Pass,Failed"}}</td>
-                                    <td>{{revision.result|yesno:"Pass,Failed"}}</td>
+                                    <td>{{revision.get_function_check_display}}</td>
+                                    <td>{{revision.get_result_display}}</td>
                                     <td>{{revision.test_engineer}}</td>
                                     <td>{{revision.comment}}</td>
                                 </tr>
