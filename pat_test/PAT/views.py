@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
 from django.views.generic.list import ListView
-from django.views.generic.edit import FormView, CreateView
+from django.views.generic.edit import FormView, CreateView, UpdateView
 from django.views.generic.detail import DetailView
 from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -44,6 +44,15 @@ class CreateTool(LoginRequiredMixin, CreateView):
     model = Tool
     fields = ['identifier', 'name']
     success_url = reverse_lazy('tools')
+
+class UpdateTool(LoginRequiredMixin, UpdateView):
+
+    template_name = 'updatetool.html'
+    model = Tool
+    fields = ['identifier', 'name']
+    success_url = reverse_lazy('tools')
+
+
 
 
 class CreateRevision(LoginRequiredMixin, CreateView):
