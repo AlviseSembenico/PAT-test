@@ -21,9 +21,9 @@ class Revision(models.Model):
         (1, 'Pass'),
         (2, 'Fail')
     ])
-    earth = models.FloatField()
-    leakage = models.FloatField()
-    insulation = models.FloatField()
+    earth = models.CharField(max_length=100)
+    leakage = models.CharField(max_length=100)
+    insulation = models.CharField(max_length=100)
     function_check = models.IntegerField(choices=[
         (1, 'Pass'),
         (2, 'Fail')
