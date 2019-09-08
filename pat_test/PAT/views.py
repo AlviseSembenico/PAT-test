@@ -10,7 +10,7 @@ from .forms import RevisionForm
 from .models import Tool, Revision
 
 
-class ToolsList(LoginRequiredMixin,ListView):
+class ToolsList(LoginRequiredMixin, ListView):
 
     template_name = 'tools_list.html'
     # paginate_by = 10
@@ -32,13 +32,13 @@ class ToolsList(LoginRequiredMixin,ListView):
         return context
 
 
-class RevisionsList(LoginRequiredMixin,DetailView):
+class RevisionsList(LoginRequiredMixin, DetailView):
 
     template_name = 'revision_list.html'
     model = Tool
 
 
-class CreateTool(LoginRequiredMixin,CreateView):
+class CreateTool(LoginRequiredMixin, CreateView):
 
     template_name = 'addtool.html'
     model = Tool
@@ -46,7 +46,7 @@ class CreateTool(LoginRequiredMixin,CreateView):
     success_url = reverse_lazy('tools')
 
 
-class CreateRevision(LoginRequiredMixin,CreateView):
+class CreateRevision(LoginRequiredMixin, CreateView):
 
     template_name = 'addrevision.html'
     form_class = RevisionForm
