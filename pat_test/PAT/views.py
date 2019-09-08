@@ -42,17 +42,15 @@ class CreateTool(LoginRequiredMixin, CreateView):
 
     template_name = 'addtool.html'
     model = Tool
-    fields = ['identifier', 'name']
+    fields = ['identifier', 'name', 'location']
     success_url = reverse_lazy('tools')
 
 class UpdateTool(LoginRequiredMixin, UpdateView):
 
     template_name = 'updatetool.html'
     model = Tool
-    fields = ['identifier', 'name']
+    fields = ['identifier', 'name', 'location']
     success_url = reverse_lazy('tools')
-
-
 
 
 class CreateRevision(LoginRequiredMixin, CreateView):

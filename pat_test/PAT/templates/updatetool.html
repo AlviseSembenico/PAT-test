@@ -19,6 +19,10 @@
                             <label>Name</label>
                             {% render_field form.name class+="form-control" %}
                         </div>
+                        <div class="form-group">
+                            <label>Location</label>
+                            {% render_field form.location class+="form-control" %}
+                        </div>
                         <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
                         <button type="button" class="btn btn-dark" onclick="window.history.back();">Back</button>
                     </form>

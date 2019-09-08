@@ -6,6 +6,7 @@ class Tool(models.Model):
     identifier = models.CharField(max_length=50)
     name = models.CharField(max_length=100)
     pending = models.BooleanField(default=True)
+    location = models.CharField(max_length=100)
 
     def __str__(self):
         return self.identifier
@@ -14,7 +15,6 @@ class Tool(models.Model):
 class Revision(models.Model):
 
     tool = models.ForeignKey(Tool, on_delete=models.CASCADE)
-    location = models.CharField(max_length=100)
     classID = models.IntegerField('class')
     date = models.DateField()
     visual_check = models.IntegerField(choices=[

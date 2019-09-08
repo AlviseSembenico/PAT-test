@@ -53,7 +53,7 @@
                             {% for tool in object_list %}
                                 <tr>
                                     <td>{{tool.identifier}}</td>
-                                    <td>{{tool.last_rev.location}}</td>
+                                    <td>{{tool.location}}</td>
                                     <td>{{tool.name}}</td>
                                     <td>{{tool.last_rev.date|default:'Not on file'}}</td>
                                     <td>{{tool.last_rev.test_engineer|default:'Not on file'}}</td>
