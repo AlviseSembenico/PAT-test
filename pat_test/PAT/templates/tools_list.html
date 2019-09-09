@@ -53,7 +53,7 @@
                             {% for tool in object_list %}
                                 <tr>
                                     <td>{{tool.identifier}}</td>
-                                    <td>{{tool.last_rev.location}}</td>
+                                    <td>{{tool.location}}</td>
                                     <td>{{tool.name}}</td>
                                     <td>{{tool.last_rev.date|default:'Not on file'}}</td>
                                     <td>{{tool.last_rev.test_engineer|default:'Not on file'}}</td>
@@ -69,6 +69,7 @@
                                     <a href="revisions/{{tool.id}}" class="btn waves-effect waves-light btn-info">Show revision</a>
                                     </td>
                                     <td>
+                                    <a href="{% url 'updatetool' tool.id %}" class="btn waves-effect waves-light btn-info">Update</a>
                                     {% if not tool.pending %}
                                         <a href="setpending/{{tool.id}}" class="btn waves-effect waves-light btn-info">Set pending</a>
                                     {% endif %}

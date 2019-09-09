@@ -32,12 +32,24 @@
                             {% render_field form.tool class+="form-control" %}
                         </div>
                         <div class="form-group">
-                            <label>Location</label>
-                            {% render_field form.location class+="form-control" %}
-                        </div>
-                        <div class="form-group">
                             <label>Test Engineer</label>
                             {% render_field form.test_engineer class+="form-control" %}
+                        </div>
+                        <div class="form-group">
+                            <label>Date</label>
+                            {% render_field form.date class+="form-control" type="date" %}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Result</label>
+                            <div class="col-sm-2">
+                            {% for choice in form.result %}
+                                <div class="custom-control custom-radio">
+                                    {{ choice.tag }}
+                                    <label style="padding-left: 10; margin-top: -5" class="custom-control-label" for="customRadio1">{{ choice.choice_label }}</label>
+                                </div>
+                            {% endfor %}
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>Class</label>
@@ -61,15 +73,15 @@
                         
                         <div class="form-group">
                             <label>Earth</label>
-                            {% render_field form.earth class+="form-control" type="number" %}
+                            {% render_field form.earth class+="form-control" %}
                         </div>
                         <div class="form-group">
                             <label>Leakage</label>
-                            {% render_field form.leakage class+="form-control" type="number" %}
+                            {% render_field form.leakage class+="form-control" %}
                         </div>
                         <div class="form-group">
                             <label>Insulation</label>
-                            {% render_field form.insulation class+="form-control" type="number" %}
+                            {% render_field form.insulation class+="form-control" %}
                         </div>
                         <div class="form-group">
                             <label>Function Check</label>

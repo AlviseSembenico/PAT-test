@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
 from django.views.generic.list import ListView
-from django.views.generic.edit import FormView, CreateView
+from django.views.generic.edit import FormView, CreateView, UpdateView
 from django.views.generic.detail import DetailView
 from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -10,7 +10,7 @@ from .forms import RevisionForm
 from .models import Tool, Revision
 
 
-class ToolsList(LoginRequiredMixin,ListView):
+class ToolsList(LoginRequiredMixin, ListView):
 
     template_name = 'tools_list.html'
     # paginate_by = 10
@@ -32,21 +32,28 @@ class ToolsList(LoginRequiredMixin,ListView):
         return context
 
 
-class RevisionsList(LoginRequiredMixin,DetailView):
+class RevisionsList(LoginRequiredMixin, DetailView):
 
     template_name = 'revision_list.html'
     model = Tool
 
 
-class CreateTool(LoginRequiredMixin,CreateView):
+class CreateTool(LoginRequiredMixin, CreateView):
 
     template_name = 'addtool.html'
     model = Tool
-    fields = ['identifier', 'name']
+    fields = ['identifier', 'name', 'location']
+    success_url = reverse_lazy('tools')
+
+class UpdateTool(LoginRequiredMixin, UpdateView):
+
+    template_name = 'updatetool.html'
+    model = Tool
+    fields = ['identifier', 'name', 'location']
     success_url = reverse_lazy('tools')
 
 
-class CreateRevision(LoginRequiredMixin,CreateView):
+class CreateRevision(LoginRequiredMixin, CreateView):
 
     template_name = 'addrevision.html'
     form_class = RevisionForm
