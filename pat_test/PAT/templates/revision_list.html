@@ -11,32 +11,32 @@
                     <table class="table no-wrap" id="toolTable">
                         <thead>
                             <tr>
-                                <th>Location</th>
-                                <th>Class</th>
                                 <th>Date</th>
+                                <th>Location</th>
+                                <th>Test engineer</th>
+                                <th>Class</th>
                                 <th>Visual check</th>
                                 <th>Earth</th>
                                 <th>Leakage</th>
                                 <th>Insulation</th>
                                 <th>Function check</th>
                                 <th>Result</th>
-                                <th>Test engineer</th>
                                 <th>Comment</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for revision in object.revision_set.all %}
                                 <tr>
-                                    <td>{{revision.location}}</td>
-                                    <td>{{revision.get_class}}</td>
                                     <td>{{revision.date}}</td>
-                                    <td>{{revision.visual_check}}</td>
+                                    <td>{{revision.location}}</td>
+                                    <td>{{revision.test_engineer}}</td>
+                                    <td>{{revision.get_class}}</td>
+                                    <td>{{revision.get_visual_check_display}}</td>
                                     <td>{{revision.earth}}</td>
                                     <td>{{revision.leakage}}</td>
                                     <td>{{revision.insulation}}</td>
-                                    <td>{{revision.function_check}}</td>
-                                    <td>{{revision.result}}</td>
-                                    <td>{{revision.test_engineer}}</td>
+                                    <td>{{revision.get_function_check_display}}</td>
+                                    <td>{{revision.get_result_display}}</td>
                                     <td>{{revision.comment}}</td>
                                 </tr>
                             {% endfor %}
