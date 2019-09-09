@@ -69,7 +69,7 @@
                                     <a href="revisions/{{tool.id}}" class="btn waves-effect waves-light btn-info">Show revision</a>
                                     </td>
                                     <td>
-                                    <a href="{% url 'updatetool' tool.id %}" class="btn waves-effect waves-light btn-info">Update</a>
+                                    <a href="{% url 'updatetool' tool.id %}" class="btn waves-effect waves-light btn-info">Edit</a>
                                     {% if not tool.pending %}
                                         <a href="setpending/{{tool.id}}" class="btn waves-effect waves-light btn-info">Set pending</a>
                                     {% endif %}
