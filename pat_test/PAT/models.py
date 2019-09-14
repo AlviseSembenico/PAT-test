@@ -7,6 +7,7 @@ class Tool(models.Model):
     name = models.CharField(max_length=100)
     pending = models.BooleanField(default=True)
     location = models.CharField(max_length=100)
+    classID = models.IntegerField('class')
 
     def __str__(self):
         return self.identifier
@@ -15,7 +16,6 @@ class Tool(models.Model):
 class Revision(models.Model):
 
     tool = models.ForeignKey(Tool, on_delete=models.CASCADE)
-    classID = models.IntegerField('class')
     date = models.DateField()
     visual_check = models.IntegerField(choices=[
         (1, 'Pass'),
@@ -34,6 +34,3 @@ class Revision(models.Model):
     ])
     test_engineer = models.CharField(max_length=100)
     comment = models.TextField(blank=True, null=True, default=None)
-
-    def get_class(self):
-        return self.classID

@@ -28,9 +28,9 @@
                             {% for revision in object.revision_set.all %}
                                 <tr>
                                     <td>{{revision.date}}</td>
-                                    <td>{{revision.location}}</td>
+                                    <td>{{revision.tool.location}}</td>
                                     <td>{{revision.test_engineer}}</td>
-                                    <td>{{revision.get_class}}</td>
+                                    <td>{{revision.tool.classID}}</td>
                                     <td>{{revision.get_visual_check_display}}</td>
                                     <td>{{revision.earth}}</td>
                                     <td>{{revision.leakage}}</td>
