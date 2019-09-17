@@ -19,7 +19,7 @@ services:
   nginx:
     build: ./nginx
     ports:
-      - 80:80
+      - 10080:10080
     depends_on:
       - web
     volumes:
