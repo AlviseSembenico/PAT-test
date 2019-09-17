@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   web:
-    build: .
+    image: thealvis/pat_test:latest 
     volumes:
       - static_volume:/pat/pat_test/collect_static
     expose:
@@ -37,3 +37,4 @@ services:
 volumes:
   static_volume:
   postgres_data:
+  
