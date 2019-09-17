@@ -21,7 +21,7 @@
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     <link href="{% static 'css/colors/blue.css' %}" id="theme" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/b-1.5.6/datatables.min.css"/>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -192,12 +192,21 @@
     <!-- Style switcher -->
     <!-- ============================================================== -->
     <script src="{% static 'assets/plugins/styleswitcher/jQuery.style.switcher.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.18/b-1.5.6/b-html5-1.5.6/datatables.min.js"></script>
 
     {% block script %}
-    
+    <script>
+        $(document).ready(function(){
+            console.log('aas')
+            $("[type='date']").flatpickr({
+                dateFormat: 'd-m-Y',
+                defaultDate: new Date()
+            });
+        });
+    </script>
     {% endblock script %}
 </body>
 
