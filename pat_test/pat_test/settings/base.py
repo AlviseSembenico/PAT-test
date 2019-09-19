@@ -143,4 +143,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, "collect_static")
 
 LOGIN_REDIRECT_URL = '/'
 
-print("static"+BASE_DIR)
+DATE_INPUT_FORMATS = ('%d-%m-%Y','%Y-%m-%d')

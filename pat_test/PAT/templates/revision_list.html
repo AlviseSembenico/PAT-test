@@ -27,7 +27,7 @@
                         <tbody>
                             {% for revision in object.revision_set.all %}
                                 <tr>
-                                    <td>{{revision.date}}</td>
+                                    <td>{{revision.date|date:'d-m-Y'}}</td>
                                     <td>{{revision.tool.location}}</td>
                                     <td>{{revision.test_engineer}}</td>
                                     <td>{{revision.tool.classID}}</td>
