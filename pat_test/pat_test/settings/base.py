@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 
 from django.utils.log import DEFAULT_LOGGING
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 from ..slack_logger import SlackExceptionHandler
 
@@ -38,6 +40,15 @@ LOGGING['handlers']['slack_admins'] = {
     'filters': ['require_debug_false'],
     'class': 'pat_test.slack_logger.SlackExceptionHandler',
 }
+
+sentry_sdk.init(
+    dsn="https://41889694a78c43499dc1e1de705dddf0@sentry.io/3575390",
+    integrations=[DjangoIntegration()],
+
+    # If you wish to associate users to errors (assuming you are using
+    # django.contrib.auth) you may enable sending PII data.
+    send_default_pii=True
+)   
 
 LOGGING['loggers']['django'] = {
     'handlers': ['console', 'slack_admins'],
