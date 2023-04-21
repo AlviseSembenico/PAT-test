@@ -1,7 +1,7 @@
 Django==2.2.24
 django-ajax-selects==1.7.1
 pytz==2019.2
-sqlparse==0.3.0
+sqlparse==0.4.4
 django-widget-tweaks==1.4.5
 requests
 gunicorn==19.9.0
